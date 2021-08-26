@@ -37,7 +37,7 @@ complex example:
 ```
 
 
-Matching bracket: (for allow list)
+Allowed parent (Matching bracket):
 | name | start | end | node |
 |:-----|:-----:|:---:|:-----|
 | undefeined         |     |     | This is global scope |
