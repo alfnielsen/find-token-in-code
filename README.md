@@ -20,6 +20,43 @@ And works for simple structure recognition in both JS Ts and Cs
 
 ```
 
+
+complex example:
+
+
+
+```ts
+    const code = "var foo = `some ${test()}`; function test(){return 0}"
+    const position = matchToken(code, 'test');
+    // position = 37 (the 'test' in `some ${test()}` are not alloew by default on curly;)
+    // default allowed parens are  [undefined,brackets.curly]
+
+    const position = matchToken(code, 'test',[undefined,brackets.curly,brackets.escapeJsTemaple]);
+    // position = 18 (the 'test' in `some ${test()}`;)
+
+```
+
+
+Matching bracket: (for allow list)
+| name | start | end | node |
+|:-----|:-----:|:---:|:-----|
+| undefeined         |     |     | This is global scope |
+| lineComment        | //  |  \n | |
+| multilineComment   | /*  |  */ | |
+| multilineComment   | /*  |  */ | |
+| angle              | <   |  >  | |
+| peparentheses      | (   |  )  | |
+| square             | [   |  ]  | |
+| curly              | {   |  }  | |
+| double             | "   |  "  | |
+| single             | '   |  '  | |
+| jsTemplate         |  \` |  \` | |
+| cSharpTemplate     | $"  |  "  | |
+| escapeJsTemaple    | ${  |  }  | only in jsTemplate |
+| inCSharpTemaple    | {   |  }  | only in cSharpTemplate |
+
+
+
 ### For more complex code:
 
 For more complex thing, take a look at something like: (Js only!)

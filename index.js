@@ -1,7 +1,8 @@
 "use strict";
 exports.__esModule = true;
+exports.brackets = void 0;
 // Meta rules for each bracket type (Map)
-var brackets = {
+exports.brackets = {
     lineComment: { name: "lineComment", start: "//", end: "\n" },
     multilineComment: { name: "multilineComment", start: "/*", end: "*/" },
     angle: { name: "angle", start: "<", end: ">" },
@@ -16,26 +17,26 @@ var brackets = {
     cSharpTemplate: { name: "cSharpTemplate", start: '$"', end: '"' }
 };
 // only start in parent
-brackets.escapeJsTemaple.startParent = brackets.jsTemplate;
-brackets.escapeCSharpTemaple.startParent = brackets.cSharpTemplate;
+exports.brackets.escapeJsTemaple.startParent = exports.brackets.jsTemplate;
+exports.brackets.escapeCSharpTemaple.startParent = exports.brackets.cSharpTemplate;
 // not in parent setting
-brackets.lineComment.notInParents = [brackets.lineComment, brackets.multilineComment, brackets.double, brackets.single, brackets.jsTemplate, brackets.cSharpTemplate];
-brackets.multilineComment.notInParents = [brackets.lineComment, brackets.multilineComment, brackets.double, brackets.single, brackets.jsTemplate, brackets.cSharpTemplate];
-brackets.angle.notInParents = [brackets.lineComment, brackets.multilineComment, brackets.double, brackets.single, brackets.jsTemplate, brackets.cSharpTemplate];
-brackets.peparentheses.notInParents = [brackets.lineComment, brackets.multilineComment, brackets.double, brackets.single, brackets.jsTemplate, brackets.cSharpTemplate];
-brackets.square.notInParents = [brackets.lineComment, brackets.multilineComment, brackets.double, brackets.single, brackets.jsTemplate, brackets.cSharpTemplate];
-brackets.curly.notInParents = [brackets.lineComment, brackets.multilineComment, brackets.double, brackets.single, brackets.jsTemplate, brackets.cSharpTemplate];
-brackets.escapeJsTemaple.notInParents = [brackets.lineComment, brackets.multilineComment, brackets.double, brackets.single, brackets.cSharpTemplate];
-brackets.escapeCSharpTemaple.notInParents = [brackets.lineComment, brackets.multilineComment, brackets.double, brackets.single, brackets.jsTemplate];
-brackets.double.notInParents = [brackets.lineComment, brackets.multilineComment, brackets.single, brackets.jsTemplate, brackets.cSharpTemplate];
-brackets.single.notInParents = [brackets.lineComment, brackets.multilineComment, brackets.double, brackets.jsTemplate, brackets.cSharpTemplate];
-brackets.jsTemplate.notInParents = [brackets.lineComment, brackets.multilineComment, brackets.double, brackets.single, brackets.cSharpTemplate];
-brackets.cSharpTemplate.notInParents = [brackets.lineComment, brackets.multilineComment, brackets.double, brackets.single, brackets.jsTemplate];
+exports.brackets.lineComment.notInParents = [exports.brackets.lineComment, exports.brackets.multilineComment, exports.brackets.double, exports.brackets.single, exports.brackets.jsTemplate, exports.brackets.cSharpTemplate];
+exports.brackets.multilineComment.notInParents = [exports.brackets.lineComment, exports.brackets.multilineComment, exports.brackets.double, exports.brackets.single, exports.brackets.jsTemplate, exports.brackets.cSharpTemplate];
+exports.brackets.angle.notInParents = [exports.brackets.lineComment, exports.brackets.multilineComment, exports.brackets.double, exports.brackets.single, exports.brackets.jsTemplate, exports.brackets.cSharpTemplate];
+exports.brackets.peparentheses.notInParents = [exports.brackets.lineComment, exports.brackets.multilineComment, exports.brackets.double, exports.brackets.single, exports.brackets.jsTemplate, exports.brackets.cSharpTemplate];
+exports.brackets.square.notInParents = [exports.brackets.lineComment, exports.brackets.multilineComment, exports.brackets.double, exports.brackets.single, exports.brackets.jsTemplate, exports.brackets.cSharpTemplate];
+exports.brackets.curly.notInParents = [exports.brackets.lineComment, exports.brackets.multilineComment, exports.brackets.double, exports.brackets.single, exports.brackets.jsTemplate, exports.brackets.cSharpTemplate];
+exports.brackets.escapeJsTemaple.notInParents = [exports.brackets.lineComment, exports.brackets.multilineComment, exports.brackets.double, exports.brackets.single, exports.brackets.cSharpTemplate];
+exports.brackets.escapeCSharpTemaple.notInParents = [exports.brackets.lineComment, exports.brackets.multilineComment, exports.brackets.double, exports.brackets.single, exports.brackets.jsTemplate];
+exports.brackets.double.notInParents = [exports.brackets.lineComment, exports.brackets.multilineComment, exports.brackets.single, exports.brackets.jsTemplate, exports.brackets.cSharpTemplate];
+exports.brackets.single.notInParents = [exports.brackets.lineComment, exports.brackets.multilineComment, exports.brackets.double, exports.brackets.jsTemplate, exports.brackets.cSharpTemplate];
+exports.brackets.jsTemplate.notInParents = [exports.brackets.lineComment, exports.brackets.multilineComment, exports.brackets.double, exports.brackets.single, exports.brackets.cSharpTemplate];
+exports.brackets.cSharpTemplate.notInParents = [exports.brackets.lineComment, exports.brackets.multilineComment, exports.brackets.double, exports.brackets.single, exports.brackets.jsTemplate];
 // not end in parent (use notInParents is not set)
-brackets.lineComment.notEndInParents = [brackets.multilineComment, brackets.double, brackets.single, brackets.jsTemplate, brackets.cSharpTemplate];
-brackets.multilineComment.notEndInParents = [brackets.lineComment, brackets.double, brackets.single, brackets.jsTemplate, brackets.cSharpTemplate];
+exports.brackets.lineComment.notEndInParents = [exports.brackets.multilineComment, exports.brackets.double, exports.brackets.single, exports.brackets.jsTemplate, exports.brackets.cSharpTemplate];
+exports.brackets.multilineComment.notEndInParents = [exports.brackets.lineComment, exports.brackets.double, exports.brackets.single, exports.brackets.jsTemplate, exports.brackets.cSharpTemplate];
 // Map to list (For easy iteration)
-var brackitSets = Object.values(brackets);
+var brackitSets = Object.values(exports.brackets);
 // test for matching start bracket (set)
 var isStart = function (code, p, parent) {
     var char = code[p];
@@ -90,13 +91,13 @@ var isEnd = function (code, p, parent) {
  *
  * @param code
  * @param token string | RegExp (the match will be done for cursor -1, so large lookbehind are not posible)
- * @param allowParents
+ * @param allowParents list of allow parent for the token
  * @param throwErrors default false - if true: throw error with information
  * @returns
  */
 function matchToken(code, token, allowParents, throwErrors) {
     var _a;
-    if (allowParents === void 0) { allowParents = [undefined, brackets.curly]; }
+    if (allowParents === void 0) { allowParents = [undefined, exports.brackets.curly]; }
     if (throwErrors === void 0) { throwErrors = false; }
     debugger;
     var stack = [];
