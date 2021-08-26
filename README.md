@@ -28,7 +28,7 @@ complex example:
 ```ts
     const code = "var foo = `some ${test()}`; function test(){return 0}"
     const position = matchToken(code, 'test');
-    // position = 37 (the 'test' in `some ${test()}` is in escapeJsTemaple and are not allowed by default;)
+    // position = 37 (the 'test' in `some ${test()}` is in escapeJsTemaple and are not allowed by default)
     // default allowed parens are  [undefined,brackets.curly]
 
     const position = matchToken(code, 'test',[undefined,brackets.curly,brackets.escapeJsTemaple]);
