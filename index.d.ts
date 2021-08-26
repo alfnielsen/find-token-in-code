@@ -36,7 +36,7 @@ export declare const brackets: {
  *
  * @param code
  * @param token string | RegExp (the match will be done for cursor -1, so large lookbehind are not posible)
- * @param allowParents list of allow parent for the token
+ * @param allowParents default [undefined, brackets.curly] - list of allow parent for the token (undefined is global scope)
  * @param throwErrors default false - if true: throw error with information
  * @returns
  */
