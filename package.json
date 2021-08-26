@@ -1,0 +1,30 @@
+{
+  "name": "find-token-in-code",
+  "version": "1.0.0",
+  "description": "find a token in a code. (including exclude of string, comment template etc) based on find-macthing-bracket npm package",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alfnielsen/find-token-in-code.git"
+  },
+  "keywords": [
+    "find",
+    "token",
+    "js",
+    "ts",
+    "cs"
+  ],
+  "author": "Alf Nielsen <alfnielsen@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alfnielsen/find-token-in-code/issues"
+  },
+  "homepage": "https://github.com/alfnielsen/find-token-in-code#readme",
+  "devDependencies": {
+    "mocha": "^9.1.0"
+  }
+}
